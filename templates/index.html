@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flask app</title>
+    <link rel="stylesheet" href='static/w3.css'>
+</head>
+
+<body>
+    <div class="w3-container">
+        <h1>Список продуктов</h1>
+        <form method="POST" class="w3-container">
+            <input class="w3-input" type="text" name="food" placeholder="Название">
+            <input class="w3-input" type="number" name="price" placeholder="Цена">
+            <input class="w3-input" type="submit" value="Добавить">
+        </form>
+        <p>список тут</p>
+        <p>Название: {{food}}, цена: {{price}}</p>
+    </div>
+</body>
+
+</html>
