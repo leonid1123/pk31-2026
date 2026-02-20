@@ -3,19 +3,33 @@
 
 <head>
     <title>Flask app</title>
-    <link rel="stylesheet" href='static/w3.css'>
+    <link rel="stylesheet" href={{ url_for('static', filename='w3.css') }}>
 </head>
 
 <body>
     <div class="w3-container">
-        <h1>Список продуктов</h1>
+        <h2>Список MLP</h2>
         <form method="POST" class="w3-container">
-            <input class="w3-input" type="text" name="food" placeholder="Название">
-            <input class="w3-input" type="number" name="price" placeholder="Цена">
-            <input class="w3-input" type="submit" value="Добавить">
+            <label>Имя</label>
+            <input class="w3-input" type="text" name="mlp_name">
+            <label>Возраст</label>
+            <input class="w3-input" type="number" name="mlp_age">
+            <label>Цвет</label>
+            <input class="w3-input" type="text" name="mlp_color">
+            
+            <input class="w3-input" type="checkbox" name="chk" value="mlp1">
+            <label>Вывести имена</label>
+            <input class="w3-input" type="checkbox" name="chk" value="mlp2">
+            <label>Вывести возраст</label>
+            <input class="w3-input" type="checkbox" name="chk" value="mlp3">
+            <label>Вывести цвет</label>
+            <input class="w3-input" type="submit" value="Внести и показать">
         </form>
-        <p>список тут</p>
-        <p>Название: {{food}}, цена: {{price}}</p>
+        <h3>Список MLP</h3>
+        <ul>
+            <li>pup</li>
+        </ul>
+        
     </div>
 </body>
 
