@@ -8,12 +8,22 @@
 
 <body>
     <div class="w3-container">
+        <table class="w3-table w3-striped">
+            <tr>
+                <th>Модель</th>
+                <th>Производитель</th>
+                <th>Цена, руб.</th>
+            </tr>
         {%for item in ans %}
+            <tr>
             {%for proc_stat in item %}
+                <td>
                 {{proc_stat}}
+                </td>
             {%endfor%}
+            </tr>
         {% endfor%}
-        
+        </table>
     </div>
 </body>
 
