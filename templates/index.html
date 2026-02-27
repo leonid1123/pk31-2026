@@ -8,27 +8,11 @@
 
 <body>
     <div class="w3-container">
-        <h2>Список MLP</h2>
-        <form method="POST" class="w3-container">
-            <label>Имя</label>
-            <input class="w3-input" type="text" name="mlp_name">
-            <label>Возраст</label>
-            <input class="w3-input" type="number" name="mlp_age">
-            <label>Цвет</label>
-            <input class="w3-input" type="text" name="mlp_color">
-            
-            <input class="w3-input" type="checkbox" name="chk" value="mlp1">
-            <label>Вывести имена</label>
-            <input class="w3-input" type="checkbox" name="chk" value="mlp2">
-            <label>Вывести возраст</label>
-            <input class="w3-input" type="checkbox" name="chk" value="mlp3">
-            <label>Вывести цвет</label>
-            <input class="w3-input" type="submit" value="Внести и показать">
-        </form>
-        <h3>Список MLP</h3>
-        <ul>
-            <li>pup</li>
-        </ul>
+        {%for item in ans %}
+            {%for proc_stat in item %}
+                {{proc_stat}}
+            {%endfor%}
+        {% endfor%}
         
     </div>
 </body>
