@@ -14,9 +14,12 @@ cur = conn.cursor()
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
+    if request.method == 'POST': #нужно поискать в словаре
+        btn1 = request.form['sort_up']
+        btn2 = request.form['sort_down']
+        print(btn1, btn2)
     cur.execute('SELECT model, manufacturer, price FROM processors')
     ans = cur.fetchall()
-    print(ans)
     return render_template('index.html', ans=ans)
 
 
