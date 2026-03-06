@@ -25,8 +25,14 @@
         {% endfor%}
         </table>
         <form method="POST">
-            <button name="sort_down" class="w3-btn">Сначала дорогие</button>
-            <button name="sort_up" class="w3-btn">Сначала дешевые</button>
+            <button name="sort_down" class="w3-btn">Сначала дешевые</button>
+            <button name="sort_up" class="w3-btn">Сначала дорогие</button>
+            <select class="w3-select" name="manufacturers">
+                {% for item in man %}
+                    <option value="{{item}}">{{item}}</option>
+                {% endfor%}
+            </select>
+            <button name="filter" class="w3-btn">Выбрать производителя</button>
         </form>
     </div>
 </body>
