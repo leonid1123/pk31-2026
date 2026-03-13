@@ -2,8 +2,10 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import pymysql.cursors
+import os
 
 app = Flask(__name__)
+PROC_FOLDER = os.path.join('static', 'img')
 
 conn = pymysql.connect(host='127.0.0.1',
                        user='pk31',
@@ -40,6 +42,9 @@ def main_page():
                 FROM processors WHERE manufacturer = %s ''',
                         sql_values)
             ans = cur.fetchall()
+        if 'reset' in request.form:
+            cur.execute('SELECT model, manufacturer, price FROM processors;')
+            ans = cur.fetchall()
 
     else:
         cur.execute('SELECT model, manufacturer, price FROM processors')
@@ -48,7 +53,10 @@ def main_page():
                            ans=ans,
                            man=get_manufacturers())
 
-# сделать кнопку "сбросить всё"
+
+@app.route('/shop', methods=['POST', 'GET'])
+def shop_page():
+    return render_template('shop.html')
 
 
 if __name__ == "__main__":

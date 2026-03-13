@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Flask app</title>
+    <link rel="stylesheet" href={{url_for('static', filename='w3.css' ) }}>
+</head>
+<body>
+<div class="w3-bar w3-gray">
+    <a class="w3-bar-item w3-button" href="/">На главную</a>
+    <a class="w3-bar-item w3-button" href="/shop">В магазин</a>
+</div>
+<div class="w3-container w3-margin">
+    <div class="w3-card-4">
+        <header class="w3-container w3-light-grey">
+            <h3>Название процессора</h3>
+        </header>
+        <div class="w3-container">
+            <p>Цена тут</p>
+            <hr>
+            <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle">
+            <p>Характеристики процессора тут</p>
+        </div>
+        <button class="w3-button w3-block w3-dark-grey">В корзину</button>
+    </div>
+</div>
+
+</body>
+</html>

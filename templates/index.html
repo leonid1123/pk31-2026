@@ -3,38 +3,43 @@
 
 <head>
     <title>Flask app</title>
-    <link rel="stylesheet" href={{ url_for('static', filename='w3.css') }}>
+    <link rel="stylesheet"  href={{url_for('static', filename='w3.css') }}>
 </head>
 
 <body>
-    <div class="w3-container">
-        <table class="w3-table w3-striped">
-            <tr>
-                <th>Модель</th>
-                <th>Производитель</th>
-                <th>Цена, руб.</th>
-            </tr>
+<div class="w3-bar w3-gray">
+  <a href="/" class="w3-bar-item w3-button">На главную</a>
+  <a href="/shop" class="w3-bar-item w3-button">В магазин</a>
+</div>
+<div class="w3-container">
+    <table class="w3-table w3-striped">
+        <tr>
+            <th>Модель</th>
+            <th>Производитель</th>
+            <th>Цена, руб.</th>
+        </tr>
         {%for item in ans %}
-            <tr>
+        <tr>
             {%for proc_stat in item %}
-                <td>
+            <td>
                 {{proc_stat}}
-                </td>
+            </td>
             {%endfor%}
-            </tr>
+        </tr>
         {% endfor%}
-        </table>
-        <form method="POST">
-            <button name="sort_down" class="w3-btn">Сначала дешевые</button>
-            <button name="sort_up" class="w3-btn">Сначала дорогие</button>
-            <select class="w3-select" name="manufacturers">
-                {% for item in man %}
-                    <option value="{{item}}">{{item}}</option>
-                {% endfor%}
-            </select>
-            <button name="filter" class="w3-btn">Выбрать производителя</button>
-        </form>
-    </div>
+    </table>
+    <form method="POST">
+        <button name="sort_down" class="w3-btn w3-border w3-margin">Сначала дешевые</button>
+        <button name="sort_up" class="w3-btn w3-border w3-margin">Сначала дорогие</button>
+        <button name="reset" class="w3-btn w3-border w3-margin">Сброс настроек</button>
+        <select class="w3-select" name="manufacturers">
+            {% for item in man %}
+            <option value="{{item}}">{{item}}</option>
+            {% endfor%}
+        </select>
+        <button name="filter" class="w3-btn w3-border w3-margin">Выбрать производителя</button>
+    </form>
+</div>
 </body>
 
 </html>
