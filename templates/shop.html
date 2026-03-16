@@ -21,7 +21,9 @@
             <img src="{{url_for('static', filename='img/'+item[3] ) }}" alt="Avatar" class="w3-left w3-circle">
             <p>{{item[4]}}</p>
         </div>
-        <button class="w3-button w3-block w3-dark-grey">В корзину</button>
+        <form method="POST">
+            <button name="{{item[5]}}" class="w3-button w3-block w3-dark-grey">В корзину</button>
+        </form>
     </div>
     {% endfor %}
 </div>

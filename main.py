@@ -56,8 +56,14 @@ def main_page():
 
 @app.route('/shop', methods=['POST', 'GET'])
 def shop_page():
+    if request.method == 'POST':
+        first_key = next(iter(request.form), None)
+        sql = '''INSERT INTO Korzina(quantity, Id_proc) VALUES (1,%s)'''
+        cur.execute(sql,(first_key,))
+        conn.commit()
+
     sql = '''SELECT model, manufacturer, 
-    price, image_file, description
+    price, image_file, description, id
     FROM processors'''
     cur.execute(sql)
     ans = cur.fetchall()
