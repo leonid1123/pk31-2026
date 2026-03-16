@@ -56,7 +56,12 @@ def main_page():
 
 @app.route('/shop', methods=['POST', 'GET'])
 def shop_page():
-    return render_template('shop.html')
+    sql = '''SELECT model, manufacturer, 
+    price, image_file, description
+    FROM processors'''
+    cur.execute(sql)
+    ans = cur.fetchall()
+    return render_template('shop.html', all_proc=ans)
 
 
 if __name__ == "__main__":

@@ -10,18 +10,20 @@
     <a class="w3-bar-item w3-button" href="/shop">В магазин</a>
 </div>
 <div class="w3-container w3-margin">
+    {% for item in all_proc%}
     <div class="w3-card-4">
         <header class="w3-container w3-light-grey">
-            <h3>Название процессора</h3>
+            <h3>Процессор:{{item[0]}}, производитель {{item[1]}}</h3>
         </header>
         <div class="w3-container">
-            <p>Цена тут</p>
+            <p>{{item[2]}}руб.</p>
             <hr>
-            <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle">
-            <p>Характеристики процессора тут</p>
+            <img src="{{url_for('static', filename='img/'+item[3] ) }}" alt="Avatar" class="w3-left w3-circle">
+            <p>{{item[4]}}</p>
         </div>
         <button class="w3-button w3-block w3-dark-grey">В корзину</button>
     </div>
+    {% endfor %}
 </div>
 
 </body>
