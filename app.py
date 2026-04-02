@@ -1,13 +1,15 @@
 from flask import (Flask,
                    request,
-                   render_template)
+                   render_template, redirect, url_for)
 import pymysql.cursors
 from db_handler import DB_handler
 app = Flask(__name__)
 db = DB_handler()
+USER = {}
 
 @app.route("/", methods=['POST', 'GET'])
 def main_app():
+    USER.clear()
     msg = ''
     mode = 'none'
     color = ''
@@ -39,23 +41,26 @@ def main_app():
 
 @app.route('/login', methods=['POST','GET'])
 def login_handler():
-    user = ''
+    USER.clear()
     login = request.form.get('login')
     password = request.form.get('password')
     sql = 'SELECT * FROM users WHERE login=%s AND password=%s'
     db.cur.execute(sql,(login,password))
     ans = db.cur.fetchone()
     if ans:
-        user = ans[1]
-        return render_template('index.html',
-                               user=user)
+        USER['nik'] = ans[1]
+        return redirect(url_for('msg_handler'))
     else:
         return render_template("login.html")
 
 
 @app.route('/msg', methods=['POST','GET'])
 def msg_handler():
-    return render_template("index.html")
+    if 'nik' in USER:
+        return render_template("index.html",
+                           user=USER['nik'])
+    else:
+        return redirect(url_for('main_app'))
 
 
 app.run(debug=True)
