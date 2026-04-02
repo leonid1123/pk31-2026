@@ -1,45 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Flask app</title>
-    <link rel="stylesheet"  href={{url_for('static', filename='w3.css') }}>
+    <meta charset="UTF-8">
+    <title>Мессенджер</title>
+    <link rel="stylesheet"
+          href={{url_for('static', filename='w3.css')}}>
 </head>
-
 <body>
-<div class="w3-bar w3-gray">
-  <a href="/" class="w3-bar-item w3-button">На главную</a>
-  <a href="/shop" class="w3-bar-item w3-button">В магазин</a>
-</div>
-<div class="w3-container">
-    <table class="w3-table w3-striped">
-        <tr>
-            <th>Модель</th>
-            <th>Производитель</th>
-            <th>Цена, руб.</th>
-        </tr>
-        {%for item in ans %}
-        <tr>
-            {%for proc_stat in item %}
-            <td>
-                {{proc_stat}}
-            </td>
-            {%endfor%}
-        </tr>
-        {% endfor%}
-    </table>
-    <form method="POST">
-        <button name="sort_down" class="w3-btn w3-border w3-margin">Сначала дешевые</button>
-        <button name="sort_up" class="w3-btn w3-border w3-margin">Сначала дорогие</button>
-        <button name="reset" class="w3-btn w3-border w3-margin">Сброс настроек</button>
-        <select class="w3-select" name="manufacturers">
-            {% for item in man %}
-            <option value="{{item}}">{{item}}</option>
-            {% endfor%}
-        </select>
-        <button name="filter" class="w3-btn w3-border w3-margin">Выбрать производителя</button>
-    </form>
-</div>
-</body>
+<h1>Мессенджер</h1>
+<p>Добро пожаловать пользователь {{user}}</p>
+<form method="post">
+    <textarea class="w3-input" rows="20" cols="30" name="main">
+        Чат возможно тут
+    </textarea>
+    <input class="w3-input" type="text" name="msg">
+    <input class="w3-input" type="submit" value="Отправить">
+</form>
 
+</body>
 </html>
